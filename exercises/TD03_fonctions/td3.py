@@ -1,4 +1,6 @@
+import time
 # temps[0] : jours, temps[1]: minutes, temps[2]: minutes, temps[3]: secondes
+
 
 def tempsEnSeconde(temps):
     """Renvoie la valeur en seconde de temps donné comme jour, heure, minute, seconde."""
@@ -74,3 +76,26 @@ afficheTemps(proportionTemps((2, 0, 36, 0), 0.2))
 afficheTemps(proportionTemps(proportion=0.2, temps=(2, 0, 36, 0)))
 
 # appeler la fonction en échangeant l'ordre des arguments
+
+
+import time
+
+
+def tempsEnDate(temps):
+    jour, heure, minute, seconde = temps
+    annee = 1970 + jour // 365
+    jour %= 365
+    return(annee, jour, heure, minute, seconde)
+
+
+def afficheDate(date=-1):
+    if date == -1:
+        date = tempsEnDate(secondeEnTemps(int(time.time())))
+    annee, jour, heure, minute, seconde = date
+    print("Année", annee, end, )
+temps = secondeEnTemps(1000000000)
+
+
+afficheTemps(temps)
+afficheDate(tempsEnDate(temps))
+afficheDate()
